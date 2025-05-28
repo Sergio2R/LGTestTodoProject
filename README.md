@@ -45,7 +45,8 @@ The backend requires **Java 21**.
 - The backend uses H2, so data is **not persisted** after restart.
 - Make sure Java 21 is installed for the backend.
 - You can change the API URL in `src/api/todoApi.ts` if needed.
-- Please contact me ASAP if something isn't working!!!
+- **Please contact me ASAP if something isn't working!!!**
+- A postman collection is included to test the BE if needed
 
 ---
 
