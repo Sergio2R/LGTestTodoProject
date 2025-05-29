@@ -8,7 +8,12 @@ interface TaskListProps {
   onDelete: (task: Task) => void;
 }
 
-const TaskList: React.FC<TaskListProps> = ({ tasks, onToggle, onEdit, onDelete }) => (
+const TaskList: React.FC<TaskListProps> = ({
+  tasks,
+  onToggle,
+  onEdit,
+  onDelete,
+}) => (
   <ul className="w-full max-w-xl space-y-2">
     {tasks.map((task) => (
       <li

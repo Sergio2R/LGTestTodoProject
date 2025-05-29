@@ -2,7 +2,7 @@ import { createContext, useContext, useReducer } from "react";
 import type { ReactNode } from "react";
 
 export type Task = {
-  id: number;
+  id?: number;
   title: string;
   description?: string;
   completed: boolean;
@@ -14,12 +14,12 @@ type State = {
 };
 
 type Action =
-  | { type: "ADD_TASK"; payload: Omit<Task, "id"> }//C
-  | { type: "TOGGLE_TASK"; payload: number }//U
+  | { type: "ADD_TASK"; payload: Omit<Task, "id"> } //C
+  | { type: "TOGGLE_TASK"; payload: number } //U
   | { type: "SET_FILTER"; payload: State["filter"] } //TODO
   | { type: "SET_TASKS"; payload: Task[] } //R
-  | { type: "DELETE_TASK"; payload: number }//D
-  | { type: "UPDATE_TASK"; payload: Task };//U
+  | { type: "DELETE_TASK"; payload: number } //D
+  | { type: "UPDATE_TASK"; payload: Task }; //U
 
 const initialState: State = {
   tasks: [],
@@ -32,12 +32,7 @@ function taskReducer(state: State, action: Action): State {
     case "SET_TASKS": //R
       return { ...state, tasks: action.payload };
     case "ADD_TASK": //C
-      const newTask: Task = {
-        ...action.payload,
-        id: Date.now(),
-        completed: false,
-      };
-      return { ...state, tasks: [...state.tasks, newTask] };
+      return { ...state, tasks: [...state.tasks, action.payload] };
     case "TOGGLE_TASK": //U
       return {
         ...state,
